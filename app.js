@@ -55,7 +55,7 @@ app.put("/players/:playerId/", async (request, response) => {
   const { playerId } = request.params;
   const addplayersDataQuery = `UPDATE cricket_team SET player_name="${playerName}",jersey_number=${jerseyNumber},role="${role}" WHERE player_id=${playerId};`;
   const addplayerData = await db.run(addplayersDataQuery);
-  const playerId = addplayerData.lastID;
+  const latestPlayerId = addplayerData.lastID;
   response.send("Player Details Updated");
 });
 app.delete("/players/:playerId/", async (request, response) => {
